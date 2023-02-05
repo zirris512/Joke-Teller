@@ -2,6 +2,7 @@ import { textToSpeech } from "./textToSpeech.js";
 
 // Get jokes from joke api
 export async function getJokes() {
+    toggleButton(this);
     let joke;
     const JokeUrl =
         "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
@@ -18,4 +19,8 @@ export async function getJokes() {
     } catch (err) {
         console.error(err);
     }
+}
+
+export function toggleButton(button) {
+    button.disabled = !button.disabled;
 }
