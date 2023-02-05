@@ -1,5 +1,7 @@
+const audio = document.querySelector("#audio");
+
 // VoiceRSS Javascript SDK
-export const VoiceRSS = {
+const VoiceRSS = {
     speech: function (e) {
         this._validate(e), this._request(e);
     },
@@ -35,7 +37,7 @@ export const VoiceRSS = {
         (t.onreadystatechange = function () {
             if (4 == t.readyState && 200 == t.status) {
                 if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
-                (audioElement.src = t.responseText), audioElement.play();
+                (audio.src = t.responseText), audio.play();
             }
         }),
             t.open("POST", "https://api.voicerss.org/", !0),
@@ -98,3 +100,16 @@ export const VoiceRSS = {
         throw "The browser does not support HTTP request";
     },
 };
+
+export function textToSpeech(text) {
+    VoiceRSS.speech({
+        key: "<API KEY>",
+        src: text,
+        hl: "en-us",
+        v: "Linda",
+        r: 0,
+        c: "mp3",
+        f: "44khz_16bit_stereo",
+        ssml: false,
+    });
+}

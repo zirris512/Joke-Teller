@@ -1,16 +1,5 @@
-import { VoiceRSS } from "./voice";
+import { getJokes } from "./getJokes.js";
 
-function test() {
-    VoiceRSS.speech({
-        key: "<API key>",
-        src: "Hello, world!",
-        hl: "en-us",
-        v: "Linda",
-        r: 0,
-        c: "mp3",
-        f: "44khz_16bit_stereo",
-        ssml: false,
-    });
-}
+const button = document.querySelector("#button");
 
-test();
+button.addEventListener("click", getJokes);
