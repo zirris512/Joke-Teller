@@ -1,4 +1,4 @@
-import { textToSpeech } from "./voice.js";
+import { textToSpeech } from "./textToSpeech.js";
 
 // Get jokes from joke api
 export async function getJokes() {

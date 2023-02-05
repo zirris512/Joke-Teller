@@ -1,7 +1,7 @@
 const audio = document.querySelector("#audio");
 
 // VoiceRSS Javascript SDK
-const VoiceRSS = {
+export const VoiceRSS = {
     speech: function (e) {
         this._validate(e), this._request(e);
     },
@@ -100,16 +100,3 @@ const VoiceRSS = {
         throw "The browser does not support HTTP request";
     },
 };
-
-export function textToSpeech(text) {
-    VoiceRSS.speech({
-        key: "<API KEY>",
-        src: text,
-        hl: "en-us",
-        v: "Linda",
-        r: 0,
-        c: "mp3",
-        f: "44khz_16bit_stereo",
-        ssml: false,
-    });
-}
